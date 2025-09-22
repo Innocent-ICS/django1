@@ -165,3 +165,7 @@ LOGGING = {
         },
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://cloudlab-262194592046.africa-south1.run.app',
+]
