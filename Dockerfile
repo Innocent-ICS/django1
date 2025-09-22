@@ -12,7 +12,7 @@ ENV PORT=8080
 ENV DEBUG=False
 
 # Collect static files (note the path to manage.py)
-RUN python cloudlab/manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 # Expose port
 EXPOSE 8080
