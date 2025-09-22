@@ -9,7 +9,7 @@ COPY . .
 
 # Set environment variables
 ENV PYTHONPATH=/app
-ENV DJANGO_SETTINGS_MODULE=cloudlab.cloudlab.settings
+ENV DJANGO_SETTINGS_MODULE=cloudlab.settings
 ENV PORT=8080
 ENV DEBUG=False
 
