@@ -20,4 +20,5 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8080
 
 # Run the application (point to cloudlab/cloudlab/wsgi.py)
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 cloudlab.wsgi:application
+CMD python manage.py migrate --noinput && \
+    exec gunicorn --bind :$PORT --workers 1 --threads 8 cloudlab.wsgi:application
