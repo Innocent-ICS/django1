@@ -1,5 +1,7 @@
 FROM python:3.10-slim
+
 WORKDIR /app
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
@@ -18,4 +20,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8080
 
 # Run the application (point to cloudlab/cloudlab/wsgi.py)
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 cloudlab.cloudlab.wsgi:application
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 cloudlab.wsgi:application
