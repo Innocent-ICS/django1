@@ -131,3 +131,37 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import sys
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,  # Keep Django’s default loggers
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "stream": sys.stdout,  # Send logs to stdout (Cloud Run collects this)
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",  # Capture everything (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "ERROR",  # Errors and above for Django internals
+            "propagate": True,
+        },
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",  # 500 errors, broken views, etc.
+            "propagate": False,
+        },
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "ERROR",  # Log database errors
+            "propagate": False,
+        },
+    },
+}
