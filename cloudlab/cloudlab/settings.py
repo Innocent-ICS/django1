@@ -29,6 +29,7 @@ SECRET_KEY = config('SECRET_KEY', default='definitely-not-my-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapp',
+    'cloudlab.webapp',
 ]
 
 MIDDLEWARE = [
