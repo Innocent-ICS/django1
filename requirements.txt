@@ -4,5 +4,6 @@ whitenoise
 requests
 python-decouple
 dj-database-url
+redis
 psycopg2-binary   # only if PostgreSQL
 # mysqlclient     # only if MySQL
