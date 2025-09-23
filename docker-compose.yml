@@ -29,7 +29,10 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn --bind 0.0.0.0:8000 --workers 3 cloudlab.wsgi:application"
     volumes:
       - .:/app
     ports:
